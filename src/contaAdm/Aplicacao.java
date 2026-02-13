@@ -1,18 +1,32 @@
 package contaAdm;
 
-
+import java.util.Scanner;
 
 public class Aplicacao {
 
 	public static void main(String[] args) {
-		Conta conta1 = new Conta("Alan", "0009", 9000.00, 12000.00);
-		Conta conta2 = new Conta("Julia", "0033", 4000.00, 8000.00);
-		Conta conta3 = new Conta("Bia", "0021", 1000.00, 15000.00);
+		try (Scanner entrada = new Scanner(System.in)) {
+			Conta[] arrayContas = new Conta[2];
 
-		System.out.println(conta1.imprimirAtributos());
-		System.out.println(conta2.imprimirAtributos());
-		System.out.println(conta3.imprimirAtributos());
-	
+			for (int i = 0; i < arrayContas.length; i++) {
+				System.out.println("Informe os dados da conta " + (i + 1) + ": ");
+				System.out.println("Informe o nome do usuario da conta: ");
+				String nome = entrada.nextLine();
+				System.out.println("Informe o numero da conta: ");
+				String numeroC = entrada.nextLine();
+				System.out.println("Informe o saldo da conta: ");
+				double saldoC = entrada.nextDouble();
+				entrada.nextLine();
+				System.out.println("Informe o limite da conta: ");
+				double limiteC = entrada.nextDouble();
+				entrada.nextLine();
+				arrayContas[i] = new Conta(nome,numeroC,saldoC,limiteC);
+			
+			}
+			for (Conta exibirC : arrayContas) {
+				System.out.println(exibirC.imprimirAtributos());
+			}
+		}
+
 	}
-
 }
