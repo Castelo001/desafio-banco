@@ -40,7 +40,7 @@ public class Aplicacao {
 				for (Conta comparaConta : arrayContas) {
 					if (escolherConta.equals(comparaConta.numeroConta)) {
 						contaEscolhida = comparaConta;
-						System.out.println("Digite: 1 - Ver o saldo. \n2 - Depositar");
+						System.out.println("Digite:\n 1 - Ver o saldo \n 2 - Depositar \n 3 - Sacar");
 						int escolhaMenu = entrada.nextInt();
 						entrada.nextLine();
 						if (escolhaMenu == 1) {
@@ -52,16 +52,23 @@ public class Aplicacao {
 							entrada.nextLine();
 							contaEscolhida.deposito(vDeposito);
 						}
+						if (escolhaMenu == 3) {
+							System.out.println("Quanto deseja sacar ?");
+							double vSaque = entrada.nextDouble();
+							entrada.nextLine();
+							contaEscolhida.sacar(vSaque);
+
+						}
 					}
-				}
-				if (contaEscolhida == null) {
-					System.out.println("Digite uma conta válida!");
-				} else {
-					System.out.println(contaEscolhida.imprimirAtributos());
+					if (contaEscolhida == null) {
+						System.out.println("Digite uma conta válida!");
+					} else {
+						System.out.println(contaEscolhida.imprimirAtributos());
+					}
+
 				}
 
 			}
-
 		}
 	}
 }

@@ -37,4 +37,12 @@ public class Conta {
 		}
 	}
 
+	boolean sacar(double valorSaque) {
+		if (valorSaque > this.saldo || valorSaque < 0) {
+			System.out.println("Valor inválido para sáque.");
+			return false;
+		}
+		this.saldo -= valorSaque;
+		return true;
+	}
 }
