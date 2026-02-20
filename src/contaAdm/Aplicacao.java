@@ -34,13 +34,24 @@ public class Aplicacao {
 			}
 
 			while (true) {
-				System.out.println("Qual conta deseja operar?");
+				System.out.println("Qual conta operar?\n Informe o número da conta que deseja operar: ");
 				String escolherConta = entrada.nextLine();
 				Conta contaEscolhida = null;
 				for (Conta comparaConta : arrayContas) {
 					if (escolherConta.equals(comparaConta.numeroConta)) {
 						contaEscolhida = comparaConta;
-
+						System.out.println("Digite: 1 - Ver o saldo. \n2 - Depositar");
+						int escolhaMenu = entrada.nextInt();
+						entrada.nextLine();
+						if (escolhaMenu == 1) {
+							System.out.println(contaEscolhida.saldo);
+						}
+						if (escolhaMenu == 2) {
+							System.out.println("Quanto deseja depositar ?");
+							double vDeposito = entrada.nextDouble();
+							entrada.nextLine();
+							contaEscolhida.deposito(vDeposito);
+						}
 					}
 				}
 				if (contaEscolhida == null) {
