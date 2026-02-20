@@ -41,11 +41,17 @@ public class Conta {
 			System.out.println("====\n  Valor inválido para sáque!  \n====");
 			return false;
 		}
-		if (valorSaque > this.saldo) {
+		if (valorSaque > this.limite) {
 			System.out.println("Exede o limite permitido");
 		}
-
-		this.saldo -= valorSaque;
+		if (valorSaque > this.saldo) {
+			System.out.println("Exede o salto permitido");
+		}
+		if (valorSaque < this.saldo) {
+			this.saldo -= valorSaque;
+			return true;
+		}
+		this.limite -= valorSaque;
 		return true;
 	}
 
