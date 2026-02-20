@@ -37,25 +37,23 @@ public class Conta {
 	}
 
 	boolean sacar(double valorSaque) {
-		if (valorSaque < 0) {
+		if (valorSaque <= 0) {
 			System.out.println("====\n  Valor inválido para sáque!  \n====");
 			return false;
 		}
-		if (valorSaque > this.limite) {
-			System.out.println("Exede o limite permitido");
+
+		if ((this.saldo - valorSaque) < -this.limite) {
+			System.out.println("Exede o saldo e o limite permitido");
+			return false;
 		}
-		if (valorSaque > this.saldo) {
-			System.out.println("Exede o salto permitido");
+		this.saldo -= valorSaque;
+		if (this.saldo < 0) {
+			System.out.println("Você entrou no cheque especial. Saldo atual:" + this.saldo);
 		}
-		if (valorSaque < this.saldo) {
-			this.saldo -= valorSaque;
-			return true;
-		}
-		this.limite -= valorSaque;
 		return true;
 	}
 
-	boolean transferir(Conta destino, double valor) {
+	boolean transferePara(Conta destino, double valor) {
 		boolean retirada = this.sacar(valor);
 		if (retirada == false) {
 			return false;
