@@ -28,21 +28,34 @@ public class Conta {
 	}
 
 	boolean deposito(double valor) {
-		if (valor > 0) {
-			this.saldo += valor;
-			return true;
-		} else {
-			System.out.println("Digite um valor positivo!");
+		if (valor <= 0) {
+			System.out.println("Digite um valor válido!");
 			return false;
 		}
+		this.saldo += valor;
+		return true;
 	}
 
 	boolean sacar(double valorSaque) {
-		if (valorSaque > this.saldo || valorSaque < 0) {
-			System.out.println("Valor inválido para sáque.");
+		if (valorSaque < 0) {
+			System.out.println("====\n  Valor inválido para sáque!  \n====");
 			return false;
 		}
+		if (valorSaque > this.saldo) {
+			System.out.println("Exede o limite permitido");
+		}
+
 		this.saldo -= valorSaque;
 		return true;
 	}
+
+	boolean transferir(Conta destino, double valor) {
+		boolean retirada = this.sacar(valor);
+		if (retirada == false) {
+			return false;
+		}
+		destino.deposito(valor);
+		return true;
+	}
+
 }
