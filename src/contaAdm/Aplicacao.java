@@ -60,12 +60,12 @@ public class Aplicacao {
 
 						}
 					}
-					if (contaEscolhida == null) {
-						System.out.println("Digite uma conta válida!");
-					} else {
-						System.out.println(contaEscolhida.imprimirAtributos());
-					}
+				}
 
+				if (contaEscolhida == null) {
+					System.out.println("Digite uma conta válida!");
+				} else {
+					System.out.println(contaEscolhida.imprimirAtributos());
 				}
 
 			}
